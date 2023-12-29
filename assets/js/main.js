@@ -1,3 +1,4 @@
+const LEVEL_LIMIT = 99;
 const STATUS_LIMIT = 199;
 
 function generateRobotImage() {
@@ -23,7 +24,6 @@ function generateRobotImage() {
 }
 
 function generateRobotStatus() {
-  const LEVEL_LIMIT = 99;
   const lvlPointsElement = document.querySelector("#level-points");
   const hpPointsElement = document.querySelector("#hp-points");
   const atkPointsElement = document.querySelector("#atk-points");
@@ -94,6 +94,49 @@ function buildRobot() {
 }
 
 buildRobot();
+checksMax();
+
+function checksMax(event) {
+  const maxLVLElement = document.querySelector("#max-lvl");
+  const maxHPElement = document.querySelector("#max-hp");
+  const maxATKElement = document.querySelector("#max-atk");
+  const maxDEFElement = document.querySelector("#max-def");
+  const maxSPDElement = document.querySelector("#max-spd");
+  const LVLPointsElement = document.querySelector("#level-points");
+  const HPPointsElement = document.querySelector("#hp-points");
+  const ATKPointsElement = document.querySelector("#atk-points");
+  const DEFPointsElement = document.querySelector("#def-points");
+  const SPDPointsElement = document.querySelector("#spd-points");
+  const elements = [
+    HPPointsElement,
+    ATKPointsElement,
+    DEFPointsElement,
+    SPDPointsElement
+  ];
+  const maxElement = [
+    maxHPElement,
+    maxATKElement,
+    maxDEFElement,
+    maxSPDElement
+  ];
+
+  let boolean = false;
+
+  if (Number(LVLPointsElement.textContent) === LEVEL_LIMIT) {
+    maxLVLElement.classList.remove("hidden");
+  }
+
+  for (let i = 0; i < elements.length; i++) {
+    if (Number(elements[i].textContent) === (STATUS_LIMIT - 1)) {
+      maxElement[i].classList.remove("hidden");
+      boolean = true;
+    }
+  }
+
+  if (boolean) {
+    event.remove();
+  }
+}
 
 const increaseHPButton = document.querySelector("#increase-hp-button");
 const increaseATKButton = document.querySelector("#increase-atk-button");
@@ -120,9 +163,10 @@ function increaseStatus(status) {
   }
 }
 
-function increaseContinuosDown(status) {
+function increaseContinuosDown(status, event) {
   intervalId = setInterval(() => {
     pressed = true;
+    checksMax(event.target);
     increaseStatus(status);
   }, 100);
 }
@@ -135,14 +179,14 @@ function increaseContinuosUp() {
   clearInterval(intervalId);
 }
 
-increaseHPButton.addEventListener("mousedown", () => increaseContinuosDown("hp"));
+increaseHPButton.addEventListener("mousedown", (event) => increaseContinuosDown("hp", event));
 increaseHPButton.addEventListener("mouseup", increaseContinuosUp);
 
-increaseATKButton.addEventListener("mousedown", () => increaseContinuosDown("atk"));
+increaseATKButton.addEventListener("mousedown", (event) => increaseContinuosDown("atk", event));
 increaseATKButton.addEventListener("mouseup", increaseContinuosUp);
 
-increaseDEFButton.addEventListener("mousedown", () => increaseContinuosDown("def"));
+increaseDEFButton.addEventListener("mousedown", (event) => increaseContinuosDown("def", event));
 increaseDEFButton.addEventListener("mouseup", increaseContinuosUp);
 
-increaseSPDButton.addEventListener("mousedown", () => increaseContinuosDown("spd"));
+increaseSPDButton.addEventListener("mousedown", (event) => increaseContinuosDown("spd", event));
 increaseSPDButton.addEventListener("mouseup", increaseContinuosUp);

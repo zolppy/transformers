@@ -66,14 +66,31 @@ h2, h3 {
   border-left: 1px solid var(--soft-red);
 }
 
-#main-statuses {
-  line-height: 2.2;
+.wrap {
+  display: flex;
+  align-items: center;
+  flex: 1;
 }
 
 .status {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.max {
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--soft-green);
+  margin-left: 4%;
+}
+
+.hidden {
+  display: none;
+}
+
+#main-statuses {
+  line-height: 2.2;
 }
 
 .increase-button {
@@ -100,4 +117,5 @@ h2, h3 {
 .increase-button i {
   color: var(--soft-blue);
   font-size: 1.2rem;
+  pointer-events: none;
 }
