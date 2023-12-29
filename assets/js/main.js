@@ -1,42 +1,22 @@
 const drawNumber = (LIMIT) => Math.floor(Math.random() * LIMIT);
 
-function generateRobbotImage() {
+function generateRobotImage() {
   const imagesPath = [
-    [
-      "assets/img/robbots/bumblee/bumblee-1.png",
-      "assets/img/robbots/bumblee/bumblee-2.png",
-      "assets/img/robbots/bumblee/bumblee-3.png"
-    ],
-    [
-      "assets/img/robbots/optimus-prime/optimus-prime-1.png",
-      "assets/img/robbots/optimus-prime/optimus-prime-2.png",
-      "assets/img/robbots/optimus-prime/optimus-prime-3.png"
-    ],
-    [
-      "assets/img/robbots/mirage/mirage-1.png",
-      "assets/img/robbots/mirage/mirage-2.png"
-    ]
+    "assets/img/robots/bumblee.png",
+    "assets/img/robots/optimus-prime.png",
+    "assets/img/robots/mirage.png"
   ];
-  
-  const I = 3;
-  const J = 3;
-  const robbotImgElement = document.querySelector("#robbot-img");
-  
-  let i = drawNumber(I);
-  let j = drawNumber(J);
 
-  if (i === 2 && j === 2) {
-    j--;
-  }
+  const robotImgElement = document.querySelector("#robot-img");
+  let ROBOT_IMAGE =  imagesPath[drawNumber(imagesPath.length)];
 
-  robbotImgElement.src = imagesPath[i][j];
+  robotImgElement.src = ROBOT_IMAGE;
 
-  return imagesPath[i][j];
+  return ROBOT_IMAGE;
 }
 
-function generateRobbotStatus() {
-  const LIMIT = 122;
-  const LEVEL_LIMIT = 199;
+function generateRobotStatus() {
+  const LEVEL_LIMIT = 99;
   const levelPointsElement = document.querySelector("#level-points");
   const hpPointsElement = document.querySelector("#hp-points");
   const atkPointsElement = document.querySelector("#atk-points");
@@ -46,167 +26,82 @@ function generateRobbotStatus() {
 
   let level = drawNumber(LEVEL_LIMIT);
 
-  hpPointsElement.textContent = drawNumber(LIMIT);
-  atkPointsElement.textContent = drawNumber(LIMIT);
-  defPointsElement.textContent = drawNumber(LIMIT);
-  spdPointsElement.textContent = drawNumber(LIMIT);
+  hpPointsElement.textContent = drawNumber(1.5 * level);
+  atkPointsElement.textContent = drawNumber(2.2 * level);
+  defPointsElement.textContent = drawNumber(3.1 * level);
+  spdPointsElement.textContent = drawNumber(1.1 * level);
   levelPointsElement.textContent = level;
-  pointsPointsElement.textContent = level * 12;
+  pointsPointsElement.textContent = level * 5;
 }
 
-function generateRobbotName(ROBBOT_IMAGE) {
-  const robbotNameElement = document.querySelector("#robbot-name");
+function generateRobotName(ROBOT_IMAGE) {
+  const robotNameElement = document.querySelector("#robot-name");
 
-  if (ROBBOT_IMAGE.includes("bumblee")) {
-    robbotNameElement.textContent = "bumblee";
-  } else if (ROBBOT_IMAGE.includes("optimus-prime")) {
-    robbotNameElement.textContent = "Optimus Prime";
+  if (ROBOT_IMAGE.includes("bumblee")) {
+    robotNameElement.textContent = "bumblee";
+  } else if (ROBOT_IMAGE.includes("optimus-prime")) {
+    robotNameElement.textContent = "Optimus Prime";
   } else {
-    robbotNameElement.textContent = "Mirage";
+    robotNameElement.textContent = "Mirage";
   }
 }
 
-function buildRobbot() {
-  const ROBBOT_IMAGE = generateRobbotImage();
-  generateRobbotName(ROBBOT_IMAGE);
-  generateRobbotStatus();
+function buildRobot() {
+  const ROBOT_IMAGE = generateRobotImage();
+  generateRobotName(ROBOT_IMAGE);
+  generateRobotStatus();
 }
 
-buildRobbot();
+buildRobot();
 
-// Mudando status
 const increaseHPButton = document.querySelector("#increase-hp-button");
 const increaseATKButton = document.querySelector("#increase-atk-button");
 const increaseDEFButton = document.querySelector("#increase-def-button");
 const increaseSPDButton = document.querySelector("#increase-spd-button");
 
 let pressed = false;
-let intervalId; // Para armazenar o ID do intervalo
+let intervalId;
 
-function increaseHP() {
-  const hpPointsElement = document.querySelector("#hp-points");
+function increaseStatus(status) {
+  const statusPointsElement = document.querySelector(`#${status}-points`);
   const pointsPointsElement = document.querySelector("#points-points");
-  let currentHPPoints = Number(hpPointsElement.textContent);
+  let currentStatusPoints = Number(statusPointsElement.textContent);
   let currentAvailablePoints = Number(pointsPointsElement.textContent);
 
-  currentHPPoints++;
+  currentStatusPoints++;
   currentAvailablePoints--;
 
-  if (currentAvailablePoints >= 0 && currentHPPoints <= 200) {
-    hpPointsElement.textContent = currentHPPoints;
+  if (currentAvailablePoints >= 0 && currentStatusPoints <= 199) {
+    statusPointsElement.textContent = currentStatusPoints;
     pointsPointsElement.textContent = currentAvailablePoints;
   } else {
     clearInterval(intervalId);
   }
 }
 
-function increaseATK() {
-  const atkPointsElement = document.querySelector("#atk-points");
-  const pointsPointsElement = document.querySelector("#points-points");
-  let currentATKPoints = Number(atkPointsElement.textContent);
-  let currentAvailablePoints = Number(pointsPointsElement.textContent);
-
-  currentATKPoints++;
-  currentAvailablePoints--;
-
-  if (currentAvailablePoints >= 0 && currentATKPoints <= 200) {
-    atkPointsElement.textContent = currentATKPoints;
-    pointsPointsElement.textContent = currentAvailablePoints;
-  } else {
-    clearInterval(intervalId);
-  }
+function increaseContinuosDown(status) {
+  intervalId = setInterval(() => {
+    pressed = true;
+    increaseStatus(status);
+  }, 100);
 }
 
-function increaseDEF() {
-  const defPointsElement = document.querySelector("#def-points");
-  const pointsPointsElement = document.querySelector("#points-points");
-  let currentDEFPoints = Number(defPointsElement.textContent);
-  let currentAvailablePoints = Number(pointsPointsElement.textContent);
+function increaseContinuosUp() {
+  setTimeout(() => {
+    pressed = false;
+  }, 1000);
 
-  currentDEFPoints++;
-  currentAvailablePoints--;
-
-  if (currentAvailablePoints >= 0 && currentDEFPoints <= 200) {
-    defPointsElement.textContent = currentDEFPoints;
-    pointsPointsElement.textContent = currentAvailablePoints;
-  } else {
-    clearInterval(intervalId);
-  }
+  clearInterval(intervalId);
 }
 
-function increaseSPD() {
-  const spdPointsElement = document.querySelector("#spd-points");
-  const pointsPointsElement = document.querySelector("#points-points");
-  let currentSPDPoints = Number(spdPointsElement.textContent);
-  let currentAvailablePoints = Number(pointsPointsElement.textContent);
+increaseHPButton.addEventListener("mousedown", () => increaseContinuosDown("hp"));
+increaseHPButton.addEventListener("mouseup", increaseContinuosUp);
 
-  currentSPDPoints++;
-  currentAvailablePoints--;
+increaseATKButton.addEventListener("mousedown", () => increaseContinuosDown("atk"));
+increaseATKButton.addEventListener("mouseup", increaseContinuosUp);
 
-  if (currentAvailablePoints >= 0 && currentSPDPoints <= 200) {
-    spdPointsElement.textContent = currentSPDPoints;
-    pointsPointsElement.textContent = currentAvailablePoints;
-  } else {
-    clearInterval(intervalId);
-  }
-}
+increaseDEFButton.addEventListener("mousedown", () => increaseContinuosDown("def"));
+increaseDEFButton.addEventListener("mouseup", increaseContinuosUp);
 
-increaseHPButton.addEventListener("mousedown", () => {
-  intervalId = setInterval(() => {
-    pressed = true;
-    increaseHP();
-  }, 100);
-});
-
-increaseHPButton.addEventListener("mouseup", () => {
-  setTimeout(() => {
-    pressed = false;
-  }, 1000);
-
-  clearInterval(intervalId);
-});
-
-increaseATKButton.addEventListener("mousedown", () => {
-  intervalId = setInterval(() => {
-    pressed = true;
-    increaseATK();
-  }, 100);
-});
-
-increaseATKButton.addEventListener("mouseup", () => {
-  setTimeout(() => {
-    pressed = false;
-  }, 1000);
-
-  clearInterval(intervalId);
-});
-
-increaseDEFButton.addEventListener("mousedown", () => {
-  intervalId = setInterval(() => {
-    pressed = true;
-    increaseDEF();
-  }, 100);
-});
-
-increaseDEFButton.addEventListener("mouseup", () => {
-  setTimeout(() => {
-    pressed = false;
-  }, 1000);
-
-  clearInterval(intervalId);
-});
-
-increaseSPDButton.addEventListener("mousedown", () => {
-  intervalId = setInterval(() => {
-    pressed = true;
-    increaseSPD();
-  }, 100);
-});
-
-increaseSPDButton.addEventListener("mouseup", () => {
-  setTimeout(() => {
-    pressed = false;
-  }, 1000);
-
-  clearInterval(intervalId);
-});
+increaseSPDButton.addEventListener("mousedown", () => increaseContinuosDown("spd"));
+increaseSPDButton.addEventListener("mouseup", increaseContinuosUp);

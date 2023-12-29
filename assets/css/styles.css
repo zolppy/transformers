@@ -38,12 +38,12 @@ body {
   flex: 1;
 }
 
-#robbot {
+#robot {
   border: 1px solid var(--soft-red);
   flex: 3;
 }
 
-#robbot-img {
+#robot-img {
   border: 1px solid var(--soft-red);
   width: 100%;
 }
@@ -52,7 +52,7 @@ h2, h3 {
   text-transform: uppercase;
 }
 
-#robbot-name {
+#robot-name {
   text-align: center;
   font-size: 2rem;
   font-weight: 600;
