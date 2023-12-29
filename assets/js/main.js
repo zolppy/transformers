@@ -77,12 +77,12 @@ function generateRobotName(ROBOT_IMAGE_PATH) {
   for (let robotName of ROBOT_NAMES) {
     if (ROBOT_IMAGE_PATH.includes(robotName)) {
       if (robotName.includes("-")) {
-        robotName.replace("-", " ");
-        robotNameElement.textContent = robotName;
-        break;
+        robotNameElement.textContent = robotName.replace("-", " ");
       } else {
         robotNameElement.textContent = robotName;
       }
+
+      break;
     }
   }
 }
