@@ -4,13 +4,21 @@ const STATUS_LIMIT = 199;
 function generateRobotImage() {
   const imagesPath = [
     "assets/img/robots/arcee.png",
+    "assets/img/robots/bonecrusher.png",
     "assets/img/robots/bumblebee.png",
+    "assets/img/robots/cheetor.png",
     "assets/img/robots/grimlock.png",
+    "assets/img/robots/ironhide.png",
     "assets/img/robots/jazz.png",
     "assets/img/robots/megatron.png",
     "assets/img/robots/mirage.png",
+    "assets/img/robots/nightbird.png",
+    "assets/img/robots/optimus-primal.png",
     "assets/img/robots/optimus-prime.png",
+    "assets/img/robots/prowl.png",
     "assets/img/robots/ratchet.png",
+    "assets/img/robots/scorponok.png",
+    "assets/img/robots/scourge.png",
     "assets/img/robots/starscream.png",
     "assets/img/robots/ultra-magnus.png"
   ];
@@ -63,15 +71,23 @@ function generateRobotName(ROBOT_IMAGE_PATH) {
   const robotNameElement = document.querySelector("#robot-name");
   const ROBOT_NAMES = [
     "arcee",
+    "bonecrusher",
     "bumblebee",
+    "cheetor",
     "grimlock",
+    "ironhide",
     "jazz",
     "megatron",
     "mirage",
+    "nightbird",
+    "optimus-primal",
     "optimus-prime",
+    "prowl",
     "ratchet",
+    "scorponok",
+    "scourge",
     "starscream",
-    "ultra-magnus"
+    "ultra-magnu"
   ];
 
   for (let robotName of ROBOT_NAMES) {
