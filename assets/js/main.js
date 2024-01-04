@@ -2,72 +2,306 @@ const LEVEL_LIMIT = 99;
 const STATUS_LIMIT = 199;
 
 const robots = [
-  { id: 1,  name: "arcee",          imagePath: "assets/img/robots/arcee.png" },
-  { id: 2,  name: "bonecrusher",    imagePath: "assets/img/robots/bonecrusher.png" },
-  { id: 3,  name: "bumblebee",      imagePath: "assets/img/robots/bumblebee.png" },
-  { id: 4,  name: "cheetor",        imagePath: "assets/img/robots/cheetor.png" },
-  { id: 5,  name: "grimlock",       imagePath: "assets/img/robots/grimlock.png" },
-  { id: 6,  name: "ironhide",       imagePath: "assets/img/robots/ironhide.png" },
-  { id: 7,  name: "jazz",           imagePath: "assets/img/robots/jazz.png" },
-  { id: 8,  name: "megatron",       imagePath: "assets/img/robots/megatron.png" },
-  { id: 9,  name: "mirage",         imagePath: "assets/img/robots/mirage.png" },
-  { id: 10, name: "nightbird",      imagePath: "assets/img/robots/nightbird.png" },
-  { id: 11, name: "optimus-primal", imagePath: "assets/img/robots/optimus-primal.png" },
-  { id: 12, name: "optimus-prime",  imagePath: "assets/img/robots/optimus-prime.png" },
-  { id: 13, name: "prowl",          imagePath: "assets/img/robots/prowl.png" },
-  { id: 14, name: "ratchet",        imagePath: "assets/img/robots/ratchet.png" },
-  { id: 15, name: "scorponok",      imagePath: "assets/img/robots/scorponok.png" },
-  { id: 16, name: "scourge",        imagePath: "assets/img/robots/scourge.png" },
-  { id: 17, name: "starscream",     imagePath: "assets/img/robots/starscream.png" },
-  { id: 18, name: "ultra-magnus",   imagePath: "assets/img/robots/ultra-magnus.png" }
+  {
+    id: 1,
+    name: "arcee",
+    imagePath: "assets/img/robots/arcee.png",
+    stats: {
+      hp: 0,
+      def: 0,
+      atk: 0,
+      spd: 0,
+      lvl: 0,
+      pts: 0
+    }
+  },
+  {
+    id: 2,
+    name: "bonecrusher",
+    imagePath: "assets/img/robots/bonecrusher.png",
+    stats: {
+      hp: 0,
+      def: 0,
+      atk: 0,
+      spd: 0,
+      lvl: 0,
+      pts: 0
+    }
+  },
+  {
+    id: 3,
+    name: "bumblebee",
+    imagePath: "assets/img/robots/bumblebee.png",
+    stats: {
+      hp: 0,
+      def: 0,
+      atk: 0,
+      spd: 0,
+      lvl: 0,
+      pts: 0
+    }
+  },
+  {
+    id: 4,
+    name: "cheetor",
+    imagePath: "assets/img/robots/cheetor.png",
+    stats: {
+      hp: 0,
+      def: 0,
+      atk: 0,
+      spd: 0,
+      lvl: 0,
+      pts: 0
+    }
+  },
+  {
+    id: 5,
+    name: "grimlock",
+    imagePath: "assets/img/robots/grimlock.png",
+    stats: {
+      hp: 0,
+      def: 0,
+      atk: 0,
+      spd: 0,
+      lvl: 0,
+      pts: 0
+    }
+  },
+  {
+    id: 6,
+    name: "ironhide",
+    imagePath: "assets/img/robots/ironhide.png",
+    stats: {
+      hp: 0,
+      def: 0,
+      atk: 0,
+      spd: 0,
+      lvl: 0,
+      pts: 0
+    }
+  },
+  {
+    id: 7,
+    name: "jazz",
+    imagePath: "assets/img/robots/jazz.png",
+    stats: {
+      hp: 0,
+      def: 0,
+      atk: 0,
+      spd: 0,
+      lvl: 0,
+      pts: 0
+    }
+  },
+  {
+    id: 8,
+    name: "megatron",
+    imagePath: "assets/img/robots/megatron.png",
+    stats: {
+      hp: 0,
+      def: 0,
+      atk: 0,
+      spd: 0,
+      lvl: 0,
+      pts: 0
+    }
+  },
+  {
+    id: 9,
+    name: "mirage",
+    imagePath: "assets/img/robots/mirage.png",
+    stats: {
+      hp: 0,
+      def: 0,
+      atk: 0,
+      spd: 0,
+      lvl: 0,
+      pts: 0
+    }
+  },
+  {
+    id: 10,
+    name: "nightbird",
+    imagePath: "assets/img/robots/nightbird.png",
+    stats: {
+      hp: 0,
+      def: 0,
+      atk: 0,
+      spd: 0,
+      lvl: 0,
+      pts: 0
+    }
+  },
+  {
+    id: 11,
+    name: "optimus-primal",
+    imagePath: "assets/img/robots/optimus-primal.png",
+    stats: {
+      hp: 0,
+      def: 0,
+      atk: 0,
+      spd: 0,
+      lvl: 0,
+      pts: 0
+    }
+  },
+  {
+    id: 12,
+    name: "optimus-prime",
+    imagePath: "assets/img/robots/optimus-prime.png",
+    stats: {
+      hp: 0,
+      def: 0,
+      atk: 0,
+      spd: 0,
+      lvl: 0,
+      pts: 0
+    }
+  },
+  {
+    id: 13,
+    name: "prowl",
+    imagePath: "assets/img/robots/prowl.png",
+    stats: {
+      hp: 0,
+      def: 0,
+      atk: 0,
+      spd: 0,
+      lvl: 0,
+      pts: 0
+    }
+  },
+  {
+    id: 14,
+    name: "ratchet",
+    imagePath: "assets/img/robots/ratchet.png",
+    stats: {
+      hp: 0,
+      def: 0,
+      atk: 0,
+      spd: 0,
+      lvl: 0,
+      pts: 0
+    }
+  },
+  {
+    id: 15,
+    name: "scorponok",
+    imagePath: "assets/img/robots/scorponok.png",
+    stats: {
+      hp: 0,
+      def: 0,
+      atk: 0,
+      spd: 0,
+      lvl: 0,
+      pts: 0
+    }
+  },
+  {
+    id: 16,
+    name: "scourge",
+    imagePath: "assets/img/robots/scourge.png",
+    stats: {
+      hp: 0,
+      def: 0,
+      atk: 0,
+      spd: 0,
+      lvl: 0,
+      pts: 0
+    }
+  },
+  {
+    id: 17,
+    name: "starscream",
+    imagePath: "assets/img/robots/starscream.png",
+    stats: {
+      hp: 0,
+      def: 0,
+      atk: 0,
+      spd: 0,
+      lvl: 0,
+      pts: 0
+    }
+  },
+  {
+    id: 18,
+    name: "ultra-magnus",
+    imagePath: "assets/img/robots/ultra-magnus.png",
+    stats: {
+      hp: 0,
+      def: 0,
+      atk: 0,
+      spd: 0,
+      lvl: 0,
+      pts: 0
+    }
+  }
 ];
 
 function buildRobot() {
   const robotImageContainer = document.querySelector("#robot-img");
   const robotNameContainer = document.querySelector("#robot-name");
   const robot = robots[Math.floor(Math.random() * robots.length)];
+  const lvlStatusContainer = document.querySelector("#level-points");
+  const hpStatusContainer = document.querySelector("#hp-points");
+  const atkStatusContainer = document.querySelector("#atk-points");
+  const defStatusContainer = document.querySelector("#def-points");
+  const spdStatusContainer = document.querySelector("#spd-points");
+  const pointsStatusContainer = document.querySelector("#points-points");
+  let robotName = robot.name;
+  robot.stats = generateRobotStatus();
+
+  while (robotName.includes("-")) {
+    robotName = robotName.replace("-", " ");
+  }
 
   robotImageContainer.src = robot.imagePath;
-  robotNameContainer.textContent = robot.name;
+  robotNameContainer.textContent = robotName;
+  lvlStatusContainer.textContent = robot.stats.lvl;
+  hpStatusContainer.textContent = robot.stats.hp;
+  atkStatusContainer.textContent = robot.stats.atk;
+  defStatusContainer.textContent = robot.stats.def;
+  spdStatusContainer.textContent = robot.stats.spd;
+  pointsStatusContainer.textContent = robot.stats.pts;
+}
 
-  generateRobotStatus();
+function drawNumber(TOTAL, LIMIT) {
+  let value;
+
+  do {
+    value = Math.floor((Math.random() * TOTAL) + 1);
+  } while (value > LIMIT);
+
+  return value;
 }
 
 function generateRobotStatus() {
-  const lvlPointsElement = document.querySelector("#level-points");
-  const hpPointsElement = document.querySelector("#hp-points");
-  const atkPointsElement = document.querySelector("#atk-points");
-  const defPointsElement = document.querySelector("#def-points");
-  const spdPointsElement = document.querySelector("#spd-points");
-  const pointsPointsElement = document.querySelector("#points-points");
+  const stats = {};
+  let lvl, pts, hp, atk, def, spd;
 
-  function drawStatus(LIMIT) {
-    let value = Math.floor(Math.random() * LIMIT);
+  lvl = drawNumber(LEVEL_LIMIT, LEVEL_LIMIT);
+  pts = lvl * 5;
 
-    while (value > STATUS_LIMIT) {
-      value = Math.floor(Math.random() * LIMIT)
-    }
-
-    return value;
-  }
-
-  let lvl = Math.floor(Math.random() * LEVEL_LIMIT);
-  let pts = lvl * 5;
-  let hp = drawStatus(pts);
+  hp = drawNumber(pts, STATUS_LIMIT);
   pts -= hp;
-  let atk = drawStatus(pts);
+  atk = drawNumber(pts, STATUS_LIMIT);
   pts -= atk;
-  let def = drawStatus(pts);
+  def = drawNumber(pts, STATUS_LIMIT);
   pts -= def;
-  let spd = drawStatus(pts);
+  spd = drawNumber(pts, STATUS_LIMIT);
+  pts -= spd;
 
-  hpPointsElement.textContent = hp;
-  atkPointsElement.textContent = def;
-  defPointsElement.textContent = atk;
-  spdPointsElement.textContent = spd;
-  lvlPointsElement.textContent = lvl;
-  pointsPointsElement.textContent = pts;
+  stats.hp = hp;
+  stats.atk = atk;
+  stats.def = def;
+  stats.spd = spd;
+  stats.lvl = lvl;
+  stats.pts = pts;
+
+  return stats;
 }
+
+generateRobotStatus();
 
 function checksMax(event) {
   const maxLVLElement = document.querySelector("#max-lvl");
