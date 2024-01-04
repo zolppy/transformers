@@ -1,34 +1,36 @@
 const LEVEL_LIMIT = 99;
 const STATUS_LIMIT = 199;
 
-function generateRobotImage() {
-  const imagesPath = [
-    "assets/img/robots/arcee.png",
-    "assets/img/robots/bonecrusher.png",
-    "assets/img/robots/bumblebee.png",
-    "assets/img/robots/cheetor.png",
-    "assets/img/robots/grimlock.png",
-    "assets/img/robots/ironhide.png",
-    "assets/img/robots/jazz.png",
-    "assets/img/robots/megatron.png",
-    "assets/img/robots/mirage.png",
-    "assets/img/robots/nightbird.png",
-    "assets/img/robots/optimus-primal.png",
-    "assets/img/robots/optimus-prime.png",
-    "assets/img/robots/prowl.png",
-    "assets/img/robots/ratchet.png",
-    "assets/img/robots/scorponok.png",
-    "assets/img/robots/scourge.png",
-    "assets/img/robots/starscream.png",
-    "assets/img/robots/ultra-magnus.png"
-  ];
+const robots = [
+  { id: 1,  name: "arcee",          imagePath: "assets/img/robots/arcee.png" },
+  { id: 2,  name: "bonecrusher",    imagePath: "assets/img/robots/bonecrusher.png" },
+  { id: 3,  name: "bumblebee",      imagePath: "assets/img/robots/bumblebee.png" },
+  { id: 4,  name: "cheetor",        imagePath: "assets/img/robots/cheetor.png" },
+  { id: 5,  name: "grimlock",       imagePath: "assets/img/robots/grimlock.png" },
+  { id: 6,  name: "ironhide",       imagePath: "assets/img/robots/ironhide.png" },
+  { id: 7,  name: "jazz",           imagePath: "assets/img/robots/jazz.png" },
+  { id: 8,  name: "megatron",       imagePath: "assets/img/robots/megatron.png" },
+  { id: 9,  name: "mirage",         imagePath: "assets/img/robots/mirage.png" },
+  { id: 10, name: "nightbird",      imagePath: "assets/img/robots/nightbird.png" },
+  { id: 11, name: "optimus-primal", imagePath: "assets/img/robots/optimus-primal.png" },
+  { id: 12, name: "optimus-prime",  imagePath: "assets/img/robots/optimus-prime.png" },
+  { id: 13, name: "prowl",          imagePath: "assets/img/robots/prowl.png" },
+  { id: 14, name: "ratchet",        imagePath: "assets/img/robots/ratchet.png" },
+  { id: 15, name: "scorponok",      imagePath: "assets/img/robots/scorponok.png" },
+  { id: 16, name: "scourge",        imagePath: "assets/img/robots/scourge.png" },
+  { id: 17, name: "starscream",     imagePath: "assets/img/robots/starscream.png" },
+  { id: 18, name: "ultra-magnus",   imagePath: "assets/img/robots/ultra-magnus.png" }
+];
 
-  const robotImgElement = document.querySelector("#robot-img");
-  let ROBOT_IMAGE_PATH =  imagesPath[Math.floor(Math.random() * imagesPath.length)];
+function buildRobot() {
+  const robotImageContainer = document.querySelector("#robot-img");
+  const robotNameContainer = document.querySelector("#robot-name");
+  const robot = robots[Math.floor(Math.random() * robots.length)];
 
-  robotImgElement.src = ROBOT_IMAGE_PATH;
+  robotImageContainer.src = robot.imagePath;
+  robotNameContainer.textContent = robot.name;
 
-  return ROBOT_IMAGE_PATH;
+  generateRobotStatus();
 }
 
 function generateRobotStatus() {
@@ -66,51 +68,6 @@ function generateRobotStatus() {
   lvlPointsElement.textContent = lvl;
   pointsPointsElement.textContent = pts;
 }
-
-function generateRobotName(ROBOT_IMAGE_PATH) {
-  const robotNameElement = document.querySelector("#robot-name");
-  const ROBOT_NAMES = [
-    "arcee",
-    "bonecrusher",
-    "bumblebee",
-    "cheetor",
-    "grimlock",
-    "ironhide",
-    "jazz",
-    "megatron",
-    "mirage",
-    "nightbird",
-    "optimus-primal",
-    "optimus-prime",
-    "prowl",
-    "ratchet",
-    "scorponok",
-    "scourge",
-    "starscream",
-    "ultra-magnu"
-  ];
-
-  for (let robotName of ROBOT_NAMES) {
-    if (ROBOT_IMAGE_PATH.includes(robotName)) {
-      if (robotName.includes("-")) {
-        robotNameElement.textContent = robotName.replace("-", " ");
-      } else {
-        robotNameElement.textContent = robotName;
-      }
-
-      break;
-    }
-  }
-}
-
-function buildRobot() {
-  const ROBOT_IMAGE_PATH = generateRobotImage();
-  generateRobotName(ROBOT_IMAGE_PATH);
-  generateRobotStatus();
-}
-
-buildRobot();
-checksMax();
 
 function checksMax(event) {
   const maxLVLElement = document.querySelector("#max-lvl");
@@ -206,3 +163,8 @@ increaseDEFButton.addEventListener("mouseup", increaseContinuosUp);
 
 increaseSPDButton.addEventListener("mousedown", (event) => increaseContinuosDown("spd", event));
 increaseSPDButton.addEventListener("mouseup", increaseContinuosUp);
+
+window.addEventListener("load", () => {
+  buildRobot();
+  checksMax();
+});
