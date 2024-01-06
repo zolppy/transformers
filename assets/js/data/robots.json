@@ -232,5 +232,109 @@
       "lvl": 0,
       "pts": 0
     }
+  },
+  {
+    "id": 19,
+    "name": "crosshairs",
+    "imagePath": "assets/img/robots/crosshairs.png",
+    "stats": {
+      "hp": 0,
+      "def": 0,
+      "atk": 0,
+      "spd": 0,
+      "lvl": 0,
+      "pts": 0
+    }
+  },
+  {
+    "id": 20,
+    "name": "drift",
+    "imagePath": "assets/img/robots/drift.png",
+    "stats": {
+      "hp": 0,
+      "def": 0,
+      "atk": 0,
+      "spd": 0,
+      "lvl": 0,
+      "pts": 0
+    }
+  },
+  {
+    "id": 21,
+    "name": "frenzy",
+    "imagePath": "assets/img/robots/frenzy.png",
+    "stats": {
+      "hp": 0,
+      "def": 0,
+      "atk": 0,
+      "spd": 0,
+      "lvl": 0,
+      "pts": 0
+    }
+  },
+  {
+    "id": 22,
+    "name": "laserbreak",
+    "imagePath": "assets/img/robots/laserbreak.png",
+    "stats": {
+      "hp": 0,
+      "def": 0,
+      "atk": 0,
+      "spd": 0,
+      "lvl": 0,
+      "pts": 0
+    }
+  },
+  {
+    "id": 23,
+    "name": "rhinox",
+    "imagePath": "assets/img/robots/rhinox.png",
+    "stats": {
+      "hp": 0,
+      "def": 0,
+      "atk": 0,
+      "spd": 0,
+      "lvl": 0,
+      "pts": 0
+    }
+  },
+  {
+    "id": 24,
+    "name": "sentinel-prime",
+    "imagePath": "assets/img/robots/sentinel-prime.png",
+    "stats": {
+      "hp": 0,
+      "def": 0,
+      "atk": 0,
+      "spd": 0,
+      "lvl": 0,
+      "pts": 0
+    }
+  },
+  {
+    "id": 25,
+    "name": "soundwave",
+    "imagePath": "assets/img/robots/soundwave.png",
+    "stats": {
+      "hp": 0,
+      "def": 0,
+      "atk": 0,
+      "spd": 0,
+      "lvl": 0,
+      "pts": 0
+    }
+  },
+  {
+    "id": 26,
+    "name": "wheeljack",
+    "imagePath": "assets/img/robots/wheeljack.png",
+    "stats": {
+      "hp": 0,
+      "def": 0,
+      "atk": 0,
+      "spd": 0,
+      "lvl": 0,
+      "pts": 0
+    }
   }
 ]
