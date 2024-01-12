@@ -336,5 +336,83 @@
       "lvl": 0,
       "pts": 0
     }
+  },
+  {
+    "id": 27,
+    "name": "airazor",
+    "imagePath": "assets/img/robots/airazor.png",
+    "stats": {
+      "hp": 0,
+      "def": 0,
+      "atk": 0,
+      "spd": 0,
+      "lvl": 0,
+      "pts": 0
+    }
+  },
+  {
+    "id": 28,
+    "name": "jetfire",
+    "imagePath": "assets/img/robots/jetfire.png",
+    "stats": {
+      "hp": 0,
+      "def": 0,
+      "atk": 0,
+      "spd": 0,
+      "lvl": 0,
+      "pts": 0
+    }
+  },
+  {
+    "id": 29,
+    "name": "sideswipe",
+    "imagePath": "assets/img/robots/sideswipe.png",
+    "stats": {
+      "hp": 0,
+      "def": 0,
+      "atk": 0,
+      "spd": 0,
+      "lvl": 0,
+      "pts": 0
+    }
+  },
+  {
+    "id": 30,
+    "name": "the-fallen",
+    "imagePath": "assets/img/robots/the-fallen.png",
+    "stats": {
+      "hp": 0,
+      "def": 0,
+      "atk": 0,
+      "spd": 0,
+      "lvl": 0,
+      "pts": 0
+    }
+  },
+  {
+    "id": 31,
+    "name": "unicron",
+    "imagePath": "assets/img/robots/unicron.png",
+    "stats": {
+      "hp": 0,
+      "def": 0,
+      "atk": 0,
+      "spd": 0,
+      "lvl": 0,
+      "pts": 0
+    }
+  },
+  {
+    "id": 32,
+    "name": "wheelie",
+    "imagePath": "assets/img/robots/wheelie.png",
+    "stats": {
+      "hp": 0,
+      "def": 0,
+      "atk": 0,
+      "spd": 0,
+      "lvl": 0,
+      "pts": 0
+    }
   }
 ]
