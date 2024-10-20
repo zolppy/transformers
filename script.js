@@ -132,6 +132,11 @@ const bots = [
   },
 ];
 
+const increaseHpButton = document.querySelector(".stats__increase-hp-button");
+const increaseAtkButton = document.querySelector(".stats__increase-atk-button");
+const increaseDefButton = document.querySelector(".stats__increase-def-button");
+const increaseSpdButton = document.querySelector(".stats__increase-spd-button");
+
 const buildBot = () => {
   const TOTAL_STATS = 4;
   const factor = (STATS_LIMIT * TOTAL_STATS) / LEVEL_LIMIT;
@@ -191,11 +196,6 @@ const showBot = ({ name, img, lvl, hp, atk, def, spd, pts }) => {
   botPtsEl.textContent = pts;
 };
 
-const increaseHpButton = document.querySelector(".stats__increase-hp-button");
-const increaseAtkButton = document.querySelector(".stats__increase-atk-button");
-const increaseDefButton = document.querySelector(".stats__increase-def-button");
-const increaseSpdButton = document.querySelector(".stats__increase-spd-button");
-
 const checkMaxLvl = () => {
   const lvlStatEl = document.querySelector(".stats__lvl");
   const maxLvlEl = document.querySelector(".stats__max-lvl");
@@ -244,9 +244,6 @@ const checkMaxSpd = () => {
     increaseSpdButton.remove();
   }
 };
-
-let pressed;
-let intervalId;
 
 const increaseHp = () => {
   const el = document.querySelector(".stats__hp");
@@ -324,61 +321,10 @@ const increaseSpd = () => {
   checkMaxSpd();
 };
 
-function increaseHpseContinuosDown() {
-  intervalId = setInterval(() => {
-    pressed = true;
-    increaseHp();
-  }, 100);
-}
-
-function increaseAtkseContinuosDown() {
-  intervalId = setInterval(() => {
-    pressed = true;
-    increaseAtk();
-  }, 100);
-}
-
-function increaseDefseContinuosDown() {
-  intervalId = setInterval(() => {
-    pressed = true;
-    increaseDef();
-  }, 100);
-}
-
-function increaseSpdseContinuosDown() {
-  intervalId = setInterval(() => {
-    pressed = true;
-    increaseSpd();
-  }, 100);
-}
-
-function increaseContinuosUp() {
-  setTimeout(() => {
-    pressed = false;
-  }, 1000);
-
-  clearInterval(intervalId);
-}
-
-increaseHpButton.addEventListener("mousedown", () =>
-  increaseHpseContinuosDown()
-);
-increaseHpButton.addEventListener("mouseup", increaseContinuosUp);
-
-increaseAtkButton.addEventListener("mousedown", () =>
-  increaseAtkseContinuosDown()
-);
-increaseAtkButton.addEventListener("mouseup", increaseContinuosUp);
-
-increaseDefButton.addEventListener("mousedown", () =>
-  increaseDefseContinuosDown()
-);
-increaseDefButton.addEventListener("mouseup", increaseContinuosUp);
-
-increaseSpdButton.addEventListener("mousedown", () =>
-  increaseSpdseContinuosDown()
-);
-increaseSpdButton.addEventListener("mouseup", increaseContinuosUp);
+increaseHpButton.addEventListener("click", increaseHp);
+increaseAtkButton.addEventListener("click", increaseAtk);
+increaseDefButton.addEventListener("click", increaseDef);
+increaseSpdButton.addEventListener("click", increaseSpd);
 
 window.addEventListener("DOMContentLoaded", () => {
   const bot = buildBot();
