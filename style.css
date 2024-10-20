@@ -1,0 +1,110 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: black;
+  color: white;
+  font-family: sans-serif;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  margin-inline: auto;
+  min-height: 100svh;
+  padding-block: 1em;
+  text-transform: uppercase;
+  width: clamp(320px, 90%, 480px);
+}
+
+.bot {
+  border: 1px solid white;
+  border-radius: 0.7em;
+  display: flex;
+  flex-direction: column;
+  padding: 1em;
+  row-gap: 1em;
+}
+
+.bot__name {
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+.bot__img {
+  width: 100%;
+}
+
+.stats {
+  border: 1px solid white;
+  border-radius: 0.7em;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1em;
+  row-gap: 2rem;
+}
+
+.stats__lvl-wrapper {
+  align-items: center;
+  column-gap: 0.5em;
+  display: flex;
+}
+
+.stats__info {
+  font-size: 1.2rem;
+}
+
+.stats__max {
+  color: greenyellow;
+  display: none;
+  font-weight: bold;
+}
+
+.stats__list {
+  display: flex;
+  flex-direction: column;
+  row-gap: 0.5em;
+}
+
+.stats__stat-wrapper {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  list-style-type: none;
+}
+
+.stats__value {
+  font-weight: bold;
+}
+
+.stats__increase-button {
+  background-color: inherit;
+  border: none;
+}
+
+@media (width >= 720px) {
+  .main {
+    align-items: center;
+    flex-direction: row;
+    justify-content: center;
+    width: clamp(720px, 100%, 1200px);
+  }
+
+  .bot__img {
+    height: 500px;
+  }
+
+  .stats {
+    flex-grow: 0;
+    width: 320px;
+  }
+
+  .stats__increase-button:hover {
+    cursor: pointer;
+  }
+}

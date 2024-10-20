@@ -1,68 +1,71 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Transformers</title>
-  <link rel="shortcut icon" href="assets/img/favicon.ico" type="image/x-icon" />
-  <link rel="stylesheet" href="assets/css/styles.css" />
-  <script defer src="assets/js/main.js"></script>
-  <!-- Bootstrap icons -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css" />
-</head>
-<body>
-  <main>
-    <div id="container">
-      <div id="robot">
-        <img id="robot-img" src="" />
-        <h2 id="robot-name"></h2>
-      </div>
-      <div id="statuses">
-        <div class="wrap">
-          <h3 id="level">lvl: <span id="level-points"></span></h3>
-          <span class="max hidden" id="max-lvl">(max)</span>
-        </div>
-        <div id="main-statuses">
-          <div class="status">
-            <div class="wrap">
-              <h3 id="hp">hp: <span id="hp-points"></span></h3>
-              <span class="max hidden" id="max-hp">(max)</span>
-            </div>
-            <button type="button" id="increase-hp-button" class="increase-button">
-              <i class="bi bi-plus-lg"></i>
-            </button>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Transformers</title>
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <main>
+      <section class="main">
+        <article class="bot">
+          <h1 class="bot__name"></h1>
+          <img src="" alt="" class="bot__img" />
+        </article>
+        <article class="stats">
+          <div class="stats__lvl-wrapper">
+            <h2 class="stats__info">Nível: <span class="stats__lvl"></span></h2>
+            <span class="stats__max stats__max-lvl">(máx)</span>
           </div>
-          <div class="status">
-            <div class="wrap">
-              <h3 id="atk">atk: <span id="atk-points"></span></h3>
-              <span class="max hidden" id="max-atk">(max)</span>
-            </div>
-            <button type="button" id="increase-atk-button" class="increase-button">
-              <i class="bi bi-plus-lg"></i>
-            </button>
-          </div>
-          <div class="status">
-            <div class="wrap">
-              <h3 id="def">def: <span id="def-points"></span></h3>
-              <span class="max hidden" id="max-def">(max)</span>
-            </div>
-            <button type="button" id="increase-def-button" class="increase-button">
-              <i class="bi bi-plus-lg"></i>
-            </button>
-          </div>
-          <div class="status">
-            <div class="wrap">
-              <h3 id="spd">spd: <span id="spd-points"></span></h3>
-              <span class="max hidden" id="max-spd">(max)</span>
-            </div>
-            <button type="button" id="increase-spd-button" class="increase-button">
-              <i class="bi bi-plus-lg"></i>
-            </button>
-          </div>
-        </div>
-        <h3 id="points">pts: <span id="points-points"></span></h3>
-      </div>
-    </div>
-  </main>
-</body>
+          <ul class="stats__list">
+            <li class="stats__stat-wrapper">
+              <p>Vida: <span class="stats__value stats__hp"></span></p>
+              <button class="stats__increase-button stats__increase-hp-button">
+                <i>
+                  <img src="img/plus-circle-fill.svg" alt="" />
+                </i>
+              </button>
+              <span class="stats__max stats__max-hp">(máx)</span>
+            </li>
+            <li class="stats__stat-wrapper">
+              <p>Ataque: <span class="stats__value stats__atk"></span></p>
+              <button class="stats__increase-button stats__increase-atk-button">
+                <i>
+                  <img src="img/plus-circle-fill.svg" alt="" />
+                </i>
+              </button>
+              <span class="stats__max stats__max-atk">(máx)</span>
+            </li>
+            <li class="stats__stat-wrapper">
+              <p>
+                Defesa:
+                <span class="stats__value stats__def"></span>
+              </p>
+              <button class="stats__increase-button stats__increase-def-button">
+                <i>
+                  <img src="img/plus-circle-fill.svg" alt="" />
+                </i>
+              </button>
+              <span class="stats__max stats__max-def">(máx)</span>
+            </li>
+            <li class="stats__stat-wrapper">
+              <p>Velocidade: <span class="stats__value stats__spd"></span></p>
+              <button class="stats__increase-button stats__increase-spd-button">
+                <i>
+                  <img src="img/plus-circle-fill.svg" alt="" />
+                </i>
+              </button>
+              <span class="stats__max stats__max-spd">(máx)</span>
+            </li>
+          </ul>
+          <h2 class="stats__info">
+            Pontos disponíveis: <span class="stats__pts"></span>
+          </h2>
+        </article>
+      </section>
+    </main>
+  </body>
 </html>
