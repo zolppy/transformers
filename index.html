@@ -4,10 +4,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Transformers</title>
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
-    />
     <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
     <link rel="stylesheet" href="style.css" />
     <script src="script.js" defer></script>
@@ -15,51 +11,8 @@
   <body>
     <main>
       <section class="main">
-        <article class="bot">
-          <h1 class="bot__name"></h1>
-          <img src="" alt="" class="bot__img" />
-        </article>
-        <article class="stats">
-          <div class="stats__lvl-wrapper">
-            <h2 class="stats__info">Nível: <span class="stats__lvl"></span></h2>
-            <span class="stats__max stats__max-lvl">(máx)</span>
-          </div>
-          <ul class="stats__list">
-            <li class="stats__stat-wrapper">
-              <p>Vida: <span class="stats__value stats__hp"></span></p>
-              <button class="stats__increase-button stats__increase-hp-button">
-                <i class="bi bi-plus-circle-fill"></i>
-              </button>
-              <span class="stats__max stats__max-hp">(máx)</span>
-            </li>
-            <li class="stats__stat-wrapper">
-              <p>Ataque: <span class="stats__value stats__atk"></span></p>
-              <button class="stats__increase-button stats__increase-atk-button">
-                <i class="bi bi-plus-circle-fill"></i>
-              </button>
-              <span class="stats__max stats__max-atk">(máx)</span>
-            </li>
-            <li class="stats__stat-wrapper">
-              <p>
-                Defesa:
-                <span class="stats__value stats__def"></span>
-              </p>
-              <button class="stats__increase-button stats__increase-def-button">
-                <i class="bi bi-plus-circle-fill"></i>
-              </button>
-              <span class="stats__max stats__max-def">(máx)</span>
-            </li>
-            <li class="stats__stat-wrapper">
-              <p>Velocidade: <span class="stats__value stats__spd"></span></p>
-              <button class="stats__increase-button stats__increase-spd-button">
-                <i class="bi bi-plus-circle-fill"></i>
-              </button>
-              <span class="stats__max stats__max-spd">(máx)</span>
-            </li>
-          </ul>
-          <h2 class="stats__info">
-            Pontos disponíveis: <span class="stats__pts"></span>
-          </h2>
+        <article>
+          <ul class="bots"></ul>
         </article>
       </section>
     </main>

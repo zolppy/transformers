@@ -1,6 +1,3 @@
-const LEVEL_LIMIT = 100;
-const STATS_LIMIT = 200;
-
 const bots = [
   {
     name: "arcee",
@@ -132,208 +129,27 @@ const bots = [
   },
 ];
 
-const increaseHpButton = document.querySelector(".stats__increase-hp-button");
-const increaseAtkButton = document.querySelector(".stats__increase-atk-button");
-const increaseDefButton = document.querySelector(".stats__increase-def-button");
-const increaseSpdButton = document.querySelector(".stats__increase-spd-button");
+const createBot = (bot) => {
+  const li = document.createElement("li");
+  const h2 = document.createElement("h2");
+  const img = document.createElement("img");
 
-const buildBot = () => {
-  const TOTAL_STATS = 4;
-  const factor = (STATS_LIMIT * TOTAL_STATS) / LEVEL_LIMIT;
-  const totalBots = bots.length;
-  const bot = bots[Math.floor(Math.random() * totalBots)];
+  li.classList = "bots__bot";
+  h2.classList = "bot__name";
+  h2.textContent = bot.name;
+  img.setAttribute("src", bot.img);
+  img.classList = "bot__img";
 
-  const name = bot.name;
-  const img = bot.img;
-  const lvl = Math.floor(Math.random() * LEVEL_LIMIT + 1);
-  let pts = lvl * factor;
-  const hp = Math.floor(
-    Math.random() * (pts >= STATS_LIMIT ? STATS_LIMIT + 1 : pts)
-  );
-  pts -= hp;
-  const atk = Math.floor(
-    Math.random() * (pts >= STATS_LIMIT ? STATS_LIMIT + 1 : pts)
-  );
-  pts -= atk;
-  const def = Math.floor(
-    Math.random() * (pts >= STATS_LIMIT ? STATS_LIMIT + 1 : pts)
-  );
-  pts -= def;
-  const spd = Math.floor(
-    Math.random() * (pts >= STATS_LIMIT ? STATS_LIMIT + 1 : pts)
-  );
-  pts -= spd;
+  li.appendChild(h2);
+  li.appendChild(img);
 
-  return {
-    name: name,
-    img: img,
-    lvl: lvl,
-    hp: hp,
-    atk: atk,
-    def: def,
-    spd: spd,
-    pts: pts,
-  };
+  return li;
 };
-
-const showBot = ({ name, img, lvl, hp, atk, def, spd, pts }) => {
-  const botNameEl = document.querySelector(".bot__name");
-  const botImgEl = document.querySelector(".bot__img");
-  const botLvlEl = document.querySelector(".stats__lvl");
-  const botHpEl = document.querySelector(".stats__hp");
-  const botAtkEl = document.querySelector(".stats__atk");
-  const botDefEl = document.querySelector(".stats__def");
-  const botSpdEl = document.querySelector(".stats__spd");
-  const botPtsEl = document.querySelector(".stats__pts");
-
-  botNameEl.textContent = name;
-  botImgEl.setAttribute("src", img);
-  botLvlEl.textContent = lvl;
-  botHpEl.textContent = hp;
-  botAtkEl.textContent = atk;
-  botDefEl.textContent = def;
-  botSpdEl.textContent = spd;
-  botPtsEl.textContent = pts;
-};
-
-const checkMaxLvl = () => {
-  const lvlStatEl = document.querySelector(".stats__lvl");
-  const maxLvlEl = document.querySelector(".stats__max-lvl");
-
-  if (Number(lvlStatEl.textContent) === LEVEL_LIMIT) {
-    maxLvlEl.style.display = "initial";
-  }
-};
-
-const checkMaxHp = () => {
-  const hpStatEl = document.querySelector(".stats__hp");
-  const maxHpEl = document.querySelector(".stats__max-hp");
-
-  if (Number(hpStatEl.textContent) === STATS_LIMIT) {
-    maxHpEl.style.display = "initial";
-    increaseHpButton.remove();
-  }
-};
-
-const checkMaxAtk = () => {
-  const atkStatEl = document.querySelector(".stats__atk");
-  const maxAtkEl = document.querySelector(".stats__max-atk");
-
-  if (Number(atkStatEl.textContent) === STATS_LIMIT) {
-    maxAtkEl.style.display = "initial";
-    increaseAtkButton.remove();
-  }
-};
-
-const checkMaxDef = () => {
-  const defStatEl = document.querySelector(".stats__def");
-  const maxDefEl = document.querySelector(".stats__max-def");
-
-  if (Number(defStatEl.textContent) === STATS_LIMIT) {
-    maxDefEl.style.display = "initial";
-    increaseDefButton.remove();
-  }
-};
-
-const checkMaxSpd = () => {
-  const spdStatEl = document.querySelector(".stats__spd");
-  const maxSpdEl = document.querySelector(".stats__max-spd");
-
-  if (Number(spdStatEl.textContent) === STATS_LIMIT) {
-    maxSpdEl.style.display = "initial";
-    increaseSpdButton.remove();
-  }
-};
-
-const increaseHp = () => {
-  const el = document.querySelector(".stats__hp");
-  const availablePointsEl = document.querySelector(".stats__pts");
-  let pts = Number(el.textContent);
-  let availablePts = Number(availablePointsEl.textContent);
-
-  pts++;
-  availablePts--;
-
-  if (availablePts >= 0 && pts <= STATS_LIMIT) {
-    el.textContent = pts;
-    availablePointsEl.textContent = availablePts;
-  } else {
-    clearInterval(intervalId);
-  }
-
-  checkMaxHp();
-};
-
-const increaseAtk = () => {
-  const el = document.querySelector(".stats__atk");
-  const availablePointsEl = document.querySelector(".stats__pts");
-  let pts = Number(el.textContent);
-  let availablePts = Number(availablePointsEl.textContent);
-
-  pts++;
-  availablePts--;
-
-  if (availablePts >= 0 && pts <= STATS_LIMIT) {
-    el.textContent = pts;
-    availablePointsEl.textContent = availablePts;
-  } else {
-    clearInterval(intervalId);
-  }
-
-  checkMaxAtk();
-};
-
-const increaseDef = () => {
-  const el = document.querySelector(".stats__def");
-  const availablePointsEl = document.querySelector(".stats__pts");
-  let pts = Number(el.textContent);
-  let availablePts = Number(availablePointsEl.textContent);
-
-  pts++;
-  availablePts--;
-
-  if (availablePts >= 0 && pts <= STATS_LIMIT) {
-    el.textContent = pts;
-    availablePointsEl.textContent = availablePts;
-  } else {
-    clearInterval(intervalId);
-  }
-
-  checkMaxDef();
-};
-
-const increaseSpd = () => {
-  const el = document.querySelector(".stats__spd");
-  const availablePointsEl = document.querySelector(".stats__pts");
-  let pts = Number(el.textContent);
-  let availablePts = Number(availablePointsEl.textContent);
-
-  pts++;
-  availablePts--;
-
-  if (availablePts >= 0 && pts <= STATS_LIMIT) {
-    el.textContent = pts;
-    availablePointsEl.textContent = availablePts;
-  } else {
-    clearInterval(intervalId);
-  }
-
-  checkMaxSpd();
-};
-
-increaseHpButton.addEventListener("click", increaseHp);
-increaseAtkButton.addEventListener("click", increaseAtk);
-increaseDefButton.addEventListener("click", increaseDef);
-increaseSpdButton.addEventListener("click", increaseSpd);
 
 window.addEventListener("DOMContentLoaded", () => {
-  const bot = buildBot();
+  const container = document.querySelector(".bots");
 
-  showBot(bot);
-
-  checkMaxLvl();
-  checkMaxHp();
-  checkMaxAtk();
-  checkMaxDef();
-  checkMaxSpd();
+  bots.forEach((bot) => {
+    container.appendChild(createBot(bot));
+  });
 });
