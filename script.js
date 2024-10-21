@@ -40,11 +40,11 @@ const bots = [
     img: "img/robots/nightbird.png",
   },
   {
-    name: "optimus-primal",
+    name: "optimus primal",
     img: "img/robots/optimus-primal.png",
   },
   {
-    name: "optimus-prime",
+    name: "optimus prime",
     img: "img/robots/optimus-prime.png",
   },
   {
@@ -68,7 +68,7 @@ const bots = [
     img: "img/robots/starscream.png",
   },
   {
-    name: "ultra-magnus",
+    name: "ultra magnus",
     img: "img/robots/ultra-magnus.png",
   },
   {
@@ -92,7 +92,7 @@ const bots = [
     img: "img/robots/rhinox.png",
   },
   {
-    name: "sentinel-prime",
+    name: "sentinel prime",
     img: "img/robots/sentinel-prime.png",
   },
   {
@@ -116,7 +116,7 @@ const bots = [
     img: "img/robots/sideswipe.png",
   },
   {
-    name: "the-fallen",
+    name: "the fallen",
     img: "img/robots/the-fallen.png",
   },
   {
@@ -146,10 +146,23 @@ const createBot = (bot) => {
   return li;
 };
 
-window.addEventListener("DOMContentLoaded", () => {
-  const container = document.querySelector(".bots");
+const generateRandomIndexes = (TOTAL_BOTS) => {
+  const indexes = Array.from({ length: TOTAL_BOTS }, (_, i) => i);
 
-  bots.forEach((bot) => {
-    container.appendChild(createBot(bot));
+  for (let i = indexes.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [indexes[i], indexes[j]] = [indexes[j], indexes[i]];
+  }
+
+  return indexes;
+};
+
+window.addEventListener("DOMContentLoaded", () => {
+  const TOTAL_BOTS = bots.length;
+  const container = document.querySelector(".bots");
+  const randomIndexes = generateRandomIndexes(TOTAL_BOTS);
+
+  randomIndexes.forEach((randomIndex) => {
+    container.appendChild(createBot(bots[randomIndex]));
   });
 });
