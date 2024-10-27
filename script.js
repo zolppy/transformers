@@ -138,6 +138,7 @@ const createBot = (bot) => {
   h2.classList = "bot__name";
   h2.textContent = bot.name;
   img.setAttribute("src", bot.img);
+  img.setAttribute("loading", "lazy");
   img.classList = "bot__img";
 
   li.appendChild(h2);
